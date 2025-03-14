@@ -6,11 +6,15 @@ on:
   pull_request:
     branches:
       - main
+
+env:
+  VARIABLE_NAME: value
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Listing files
-        run: ls -al
+      - name: display variable
+        run: echo ${{ env.VARIABLE_NAME }}
