@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/assets/css/register.css">
+		<title>Inscription</title>
+	</head>
+	<body>
+		<header>
+			<div class="nav-container">
+				<div class="logo_Connexion">
+					<img src="/assets/img/Logo_Connexion.png" alt="Logo">
+				</div>
+				<nav>
+					<ul>
+						<li><a href="/">Accueil</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<div class="container">
+			<div class="characters">
+				<img src="/assets/img/image_jeux.png" alt="Personnages Gaming">
+			</div>
+			{# <h1>Inscription</h1> #}
+
+			<form action="/register" method="POST">
+				<label for="nom">Nom</label>
+				<input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+
+				<label for="prenom">Prénom</label>
+				<input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+
+				<label for="date_naissance">Date de naissance</label>
+				<input type="date" id="date_naissance" name="date_naissance" required>
+
+				<label for="mail">Email</label>
+				<input type="email" id="mail" name="mail" placeholder="Votre email" required>
+
+				<label for="pseudo">Pseudo</label>
+				<input type="text" id="pseudo" name="pseudo" placeholder="Votre pseudo" required>
+
+				<label for="password">Mot de passe</label>
+				<input type="password" id="password" name="password" placeholder="Mot de passe" required>
+
+				<label for="confirm_password">Confirmer le mot de passe</label>
+				<input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmez votre mot de passe" required>
+
+				<button type="submit">S'inscrire</button>
+				<button type="button" class="secondary-btn" onclick="window.location.href='/login';">Se connecter</button>
+			</form>
+		</div>
+
+	</body>
+</html>

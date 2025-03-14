@@ -1,0 +1,8 @@
+model BadgeUtilisateur {
+    utilisateur Utilisateur @relation(fields: [utilisateur_id], references: [id])
+    utilisateur_id Int
+    badge Badge @relation(fields: [badge_id], references: [id])
+    badge_id Int
+    @@id([utilisateur_id, badge_id]) 
+}
+

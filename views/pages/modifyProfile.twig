@@ -1,0 +1,24 @@
+{% extends "../layouts/base.twig" %}
+
+{% block style %}
+    <link rel="stylesheet" href="/assets/css/profil.css">
+{% endblock %}
+
+{% block main %}
+
+<h1>Modifier mes informations personnelles</h1>
+
+<form action="/profil/modify" method="POST">
+    <label for="mail">Email:</label>
+    <input type="mail" id="mail" name="mail" value="{{ utilisateur.mail }}" required><br><br>
+
+    <label for="nom">Nom:</label>
+    <input type="text" id="nom" name="nom" value="{{ utilisateur.nom }}" required><br><br>
+
+    <label for="pseudo">Pseudo:</label>
+    <input type="text" id="pseudo" name="pseudo" value="{{ utilisateur.pseudo }}" required><br><br>
+
+    <button type="submit">Sauvegarder les modifications</button>
+</form>
+
+{% endblock %}

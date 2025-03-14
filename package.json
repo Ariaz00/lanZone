@@ -1,0 +1,26 @@
+{
+  "name": "projet_final",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "seed": "node prisma/seed.js"
+  },
+  "author": "Alyzée",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/google-calendar": "^6.1.15",
+    "@prisma/client": "^5.21.1",
+    "axios": "^1.7.9",
+    "bcrypt": "^5.1.1",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "luxon": "^3.5.0",
+    "prisma": "^5.21.1",
+    "twig": "^1.17.1"
+  }
+}

@@ -1,0 +1,8 @@
+model MaterielUtilisateur{
+    id Int @id @default(autoincrement())
+    utilisateur Utilisateur @relation(fields: [utilisateur_id], references: [id])
+    utilisateur_id Int
+    materiel Materiel @relation(fields: [materiel_id], references: [id])
+    materiel_id Int
+    quantite Int
+}

@@ -1,0 +1,6 @@
+model Materiel{
+    id Int @id @default(autoincrement())
+    nom_materiel String
+    utilisateurs MaterielUtilisateur[]
+}
+

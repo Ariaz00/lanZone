@@ -1,0 +1,10 @@
+model Participant{
+    id Int @id @default(autoincrement())
+    utilisateur Utilisateur @relation(fields: [utilisateur_id], references: [id])
+    utilisateur_id Int
+    lan Lan @relation(fields: [lan_id], references: [id])
+    lan_id Int
+    date_inscription DateTime
+    rang Int?
+}
+

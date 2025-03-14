@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/login.css">
+    <title>Connexion</title>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo_Connexion">
+                <img src="/assets/img/Logo_Connexion.png" alt="Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Accueil</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="characters">
+            <img src="/assets/img/image_jeux.png" alt="Personnages Gaming">
+        </div>
+        {# <h1>Connexion</h1> #}
+
+        <form action="/login" method="POST">
+            <label for="pseudo">Pseudo</label>
+            <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required>
+
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" placeholder="Mot De Passe" required>
+
+            <button type="submit">Connexion</button>
+            <button type="button" class="secondary-btn" onclick="window.location.href='/register';">S'inscrire</button>
+        </form>
+    </div>
+
+</body>
+</html>
+

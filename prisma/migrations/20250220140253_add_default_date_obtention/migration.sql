@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `badge` MODIFY `date_obtention` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3);

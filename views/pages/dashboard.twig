@@ -1,0 +1,143 @@
+{% extends "../layouts/base.twig" %}
+
+{% block style %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="/assets/css/dashboard.css">
+{% endblock %}
+
+{% block main %}
+    <div class="dashboard-header">
+        <div class="nav-left">
+            <form class="search-bar" action="/search" method="GET">
+                <input type="text" name="query" placeholder="Rechercher une lan..."/>
+                <button type="submit">🔍</button>
+            </form>
+            <div class="createLanButton">
+                <form action="/createLan" method="POST">
+                    <button type="submit">Créer une lan</button>
+                </form>
+            </div>
+        </div>
+        <div class="logo">
+            <img src="/assets/img/logo_dashboard.png" alt="Logo"/>
+        </div>
+        <div class="header-buttons">
+            <a href="/profil" class="profil-button">Profil</a>
+            <form action="/logout" method="POST" style="display:inline;">
+                <button type="submit" class="logout-button">Déconnexion</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Carousel pour les LANs créées -->
+    <div class="lansCarouselContainer">
+        <button id="prevBtn" class="carousel-btn">◀</button>
+        <div class="lansContainer">
+            <h2>Mes LANs créées</h2>
+            {% if lans and lans|length > 0 %}
+                <ul class="lanList">
+                    {% for lan in lans %}
+                        <li class="lanItem">
+                            <h3>{{ lan.nom_lan }}</h3>
+                            <p>Date : {{ lan.date | date("d/m/Y") }}</p>
+                            <p>Lieu : {{ lan.lieu }}</p>
+                            <p>Description : {{ lan.description }}</p>
+                            <div class="editDeleteButtons">
+                                <form action="/lan/edit/{{ lan.id }}" method="GET">
+                                    <button type="submit" class="editButton">Modifier</button>
+                                </form>
+                                <form action="/lan/delete/{{ lan.id }}" method="POST">
+                                    <button type="submit" class="deleteButton">Supprimer</button>
+                                </form>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Vous n'avez créé aucune LAN pour le moment !</p>
+            {% endif %}
+        </div>
+        <button id="nextBtn" class="carousel-btn">▶</button>
+    </div>
+
+    <!-- Liste de toutes les lans -->
+    <div class="allLansContainer">
+        <h2>Lans disponibles :</h2>
+        {% if allLans and allLans|length > 0 %}
+            <ul class="lanList">
+                {% for lan in allLans %}
+                    <li class="lanItem">
+                        <h3>{{ lan.nom_lan }}</h3>
+                        <p>Date : {{ lan.date | date("d/m/Y") }}</p>
+                        <p>Lieu : {{ lan.lieu }}</p>
+                        <p>Description : {{ lan.description }}</p>
+                        <p>Matériel nécessaire : {{ lan.materiel }}</p>
+                        <p>Organisateur : {{ lan.organisateur.pseudo }}</p>
+                        <p>Participants : {{ lan.nombre_participants }} / {{ lan.max_participants }}</p>
+
+                        {% set inscrit = false %}
+                        {% for participation in utilisateur.participations %}
+                            {% if participation.lan_id == lan.id %}
+                                {% set inscrit = true %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if inscrit %}
+                            <form action="/desinscription/{{ lan.id }}" method="POST">
+                                <button type="submit" class="unsubscribeButton">Se désinscrire</button>
+                            </form>
+                        {% elseif lan.nombre_participants < lan.max_participants %}
+                            <form action="/inscription/{{ lan.id }}" method="POST">
+                                <button type="submit" class="subscribeButton">S'inscrire</button>
+                            </form>
+                        {% else %}
+                            <button class="fullButton" disabled>Complet</button>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aucune lan n'a encore été créée.</p>
+        {% endif %}
+    </div>
+
+    <div id="map" style="height: 500px; width: 100%;"></div>
+{% endblock %}
+
+{% block script %}
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Carousel
+            const lanList = document.querySelector(".lansCarouselContainer .lanList");
+            const prevBtn = document.getElementById("prevBtn");
+            const nextBtn = document.getElementById("nextBtn");
+
+            nextBtn.addEventListener("click", () => {
+                lanList.scrollBy({ left: 300, behavior: "smooth" });
+            });
+
+            prevBtn.addEventListener("click", () => {
+                lanList.scrollBy({ left: -300, behavior: "smooth" });
+            });
+
+            // Map
+            var map = L.map('map').setView([48.8566, 2.3522], 6); // Centre sur Paris par défaut
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Liste des LANs et ajout des marqueurs
+            var lans = {{ allLans|json_encode|raw }};
+            lans.forEach(lan => {
+                console.log(`LAN: ${lan.nom_lan}, Latitude: ${lan.latitude}, Longitude: ${lan.longitude}`);
+                if (lan.latitude && lan.longitude) {
+                    L.marker([parseFloat(lan.latitude), parseFloat(lan.longitude)])
+                        .addTo(map)
+                        .bindPopup(`<b>${lan.nom_lan}</b><br>${lan.lieu}`);
+                }
+            });
+        });
+    </script>
+{% endblock %}

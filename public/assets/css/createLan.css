@@ -1,0 +1,132 @@
+/* Importation de la police */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-image: url('../img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #0a0216;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nav-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+    z-index: 1000;
+}
+
+.logo img {
+    width: 120px;
+}
+
+.dashboard-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    background: #5231C9;
+    padding: 8px 15px;
+    border-radius: 10px;
+}
+
+.dashboard-link:hover {
+    background: #151a84;
+}
+
+.createLanContainer {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.createLanContainer h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.createLanContainer form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.createLanContainer label {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    text-align: left;
+}
+
+.createLanContainer input,
+.createLanContainer textarea {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+}
+
+.createLanContainer input::placeholder,
+.createLanContainer textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.createLanContainer textarea {
+    resize: none;
+    height: 80px;
+}
+
+.createLanContainer button {
+    width: 60%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 15px;
+    background: #5231C9;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    margin: 15px auto 0 auto;
+    text-align: center;
+}
+
+.createLanContainer button:hover {
+    background: #151a84;
+}
+
+.createLanContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.createLanContainer::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}

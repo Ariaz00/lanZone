@@ -1,0 +1,28 @@
+{% extends "../layouts/base.twig" %}
+
+{% block style %}
+    <link rel="stylesheet" href="/assets/css/editLan.css">
+{% endblock %}
+
+{% block main %}
+
+<div class="editLanContainer">
+    <h2>Modifier la lan</h2>
+    <form action="/lan/edit/{{ lan.id }}" method="POST">
+        <label for="nom">Nom de la lan :</label>
+        <input type="text" id="nom" name="nom" value="{{ lan.nom_lan }}" required>
+
+        <label for="date">Date de la lan :</label>
+        <input type="date" id="date" name="date" value="{{ lan.date | date('Y-m-d') }}" required>
+
+        <label for="lieu">Lieu de la lan :</label>
+        <input type="text" id="lieu" name="lieu" value="{{ lan.lieu }}" required>
+
+        <label for="description">Description :</label>
+        <textarea id="description" name="description">{{ lan.description }}</textarea>
+
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+</div>
+
+{% endblock %}

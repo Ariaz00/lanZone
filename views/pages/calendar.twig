@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Calendrier Google</title>
+    
+    <!-- Inclure le CSS de FullCalendar -->
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@3.3.0/main.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <h1>Mon Calendrier Google</h1>
+
+    <!-- Le div où FullCalendar va être injecté -->
+    <div id="calendar"></div>
+
+    <!-- Inclusion du script API Google -->
+    <script src="https://apis.google.com/js/api.js"></script>
+
+    <!-- Inclusion de FullCalendar -->
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@3.3.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@3.3.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@3.3.0/main.min.js"></script>
+
+    <!-- Inclusion de ton fichier JS où tu as configuré le calendrier -->
+    <script src="/router/calendar.js"></script>
+
+</body>
+</html>

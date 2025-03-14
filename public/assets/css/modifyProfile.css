@@ -1,0 +1,63 @@
+
+form {
+    background: rgba(255, 255, 255, 0.2); 
+    padding: 20px;
+    border-radius: 12px; 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    margin: 0 auto;
+    max-width: 600px;
+    font-family: 'Arial', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+
+label {
+    display: block;
+    color: #fff;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+input[type="text"], input[type="mail"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.3); /* légère transparence */
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1em;
+    outline: none;
+    height: 45px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus, input[type="mail"]:focus {
+    border-color: #4CAF50; /* Couleur de survol pour les champs */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.6);
+}
+
+/* Bouton de soumission */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}

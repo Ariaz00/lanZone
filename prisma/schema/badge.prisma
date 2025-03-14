@@ -1,0 +1,8 @@
+model Badge{
+    id Int @id @default(autoincrement())
+    nom_badge String
+    image_url String @default("/images/badges/default.png")
+    description String
+    date_obtention DateTime @default(now())
+    utilisateurs BadgeUtilisateur[]
+}

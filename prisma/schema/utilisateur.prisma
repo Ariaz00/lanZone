@@ -1,0 +1,14 @@
+model Utilisateur{
+    id Int @id @default(autoincrement())
+    nom String
+    prenom String
+    date_naissance DateTime
+    mail String @unique
+    pseudo String @unique
+    password String
+    role String
+    badges BadgeUtilisateur[]
+    participations Participant[]
+    materiels MaterielUtilisateur[]
+    lan_crees Lan[] @relation("Organisateur")
+}

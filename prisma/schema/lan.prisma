@@ -1,0 +1,15 @@
+model Lan{
+    id Int @id @default(autoincrement())
+    nom_lan String
+    date DateTime
+    lieu String
+    latitude Float?
+    longitude Float?
+    description String
+    organisateur Utilisateur @relation("Organisateur", fields: [organisateur_id], references: [id])
+    organisateur_id Int
+    participants Participant[]
+    max_participants Int @default(10)
+    materiel String
+}
+

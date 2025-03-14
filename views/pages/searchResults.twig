@@ -1,0 +1,30 @@
+{% extends "../layouts/base.twig" %}
+
+{% block style %}
+    <link rel="stylesheet" href="/assets/css/searchResults.css">
+{% endblock %}
+
+{% block main %}
+
+<div class="resultsContainer">
+    <h1>{{ title }}</h1>
+    <p>Résultats pour "{{ query }}" :</p>
+
+    {% if allLans and allLans.length > 0 %}
+        <ul class="lanList">
+            {% for lan in allLans %}
+                <li class="lanItem">
+                    <h3>{{ lan.nom_lan }}</h3>
+                    <p>Date : {{ lan.date | date("d/m/Y") }}</p>
+                    <p>Lieu : {{ lan.lieu }}</p>
+                    <p>Description : {{ lan.description }}</p>
+                    <p>Organisateur : {{ lan.organisateur.pseudo }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun résultat trouvé pour "{{ query }}"</p>
+    {% endif %}
+</div>
+
+{% endblock %}
