@@ -3,20 +3,20 @@ services:
   app:
     build: .
     ports:
-      - "3006:3000"
+      - "3001:3000"
       #volumes= donne qu'on persiste dans le dossier uploads
     volumes:
-      - ./uploads:/app/uploads
-      #- .:/app
+      # - ./uploads:/app/uploads
+      - .:/app
     environment:
-      - DATABASE_URL=postgresql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-password}@database:5432/${POSTGRES_DB:-app}
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-password}@database/${POSTGRES_DB:-app}
     depends_on:
       - database
 
   database:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
     ports:
-      - 30061:5432
+      - 30011:5432
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-app}
       # You should definitely change the password in production
